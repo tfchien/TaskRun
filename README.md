@@ -37,16 +37,15 @@ taskrun.csproj
 ### Building the Project
 
 To build the project, run the following command in the [taskrun](http://_vscodecontentref_/7) directory:
-
 ```sh
 dotnet build
----
+```
 
 ### Running the Project
 To run the project, use the following command:
----sh
+```sh
 dotnet run
----
+```
 
 ## Usage
 ### Logging
