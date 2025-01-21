@@ -54,7 +54,7 @@ The logging functionality is managed by the LogMng class. To initialize the logg
 ### Configuration Management
 The configuration management is handled by the ConfigMng class. To log a message, use the Log method:
 
-### Contributing
+## Contributing
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
 ## License
