@@ -1,0 +1,258 @@
+=================================================
+FastCopy(ver3.26) ∂}©l©Û 2025/01/14 14:53:44  
+
+<®”∑Ω>  D:\temp\backup\Source\*  
+<DestDir> \\NB10028R\backup\Target
+<•]ßt> *.txt   
+<§£•]ßt> web.config;*.config;*.tmp 
+<©R•O> Ë§áË£Ω-Â¶ÇÊûúÊ™îÊ°àÂ§ßÂ∞èÊàñÊó•Êúü‰∏çÂêåÊàñÊ™îÊ°à‰∏çÂ≠òÂú®   
+-------------------------------------------------
+ µLø˘ª~   
+
+ÔøΩ`ÔøΩp≈™ÔøΩÔøΩ   = 0.0 MB
+ÔøΩ`ÔøΩpÔøΩgÔøΩJ   = 0.0 MB
+ÔøΩ…ÆÔøΩÔøΩ`ÔøΩÔøΩ   = 0 (0)
+ÔøΩ`ÔøΩpÔøΩÔøΩÔøΩL   = 0.0 MB
+ÔøΩÔøΩÔøΩLÔøΩ…ÆÔøΩ   = 1 (0)
+ÔøΩ…∂ÔøΩÔøΩ`ÔøΩp   = 0.0 ÔøΩÔøΩ 
+ÔøΩ«øÔøΩtÔøΩv   = 0.00 MB/s
+ÔøΩ…Æ◊≥tÔøΩv= 0.00 ÔøΩÔøΩÔøΩ…ÆÔøΩ/ÔøΩÔøΩ 
+
+µ≤™G:    (ÔøΩÔøΩÔøΩ~ÔøΩ…ÆÔøΩ : 0 / ÔøΩÔøΩÔøΩ~ÔøΩÿøÔøΩ: 0)
+
+=================================================
+FastCopy(ver5.8.0) start at 2025/01/16 13:45:48
+<Source>  \\192.168.1.19\SQLBackup\test\*
+<DestDir> \\192.168.1.19\SQLBackup\20250116
+<Include> *.txt
+<Exclude> web.config;*.config;*.tmp
+<Command> Diff (Size/Date)
+-------------------------------------------------
+
+TotalRead  = 0.0 MiB
+TotalWrite = 0.0 MiB
+TotalFiles = 1 (0)
+TotalTime  = 0.0 sec
+TransRate  = 0.00 MB/s
+FileRate   = 1,000 files/s
+
+Result : (ErrFiles : 0 / ErrDirs : 0) at 2025/01/16 13:45:48
+
+=================================================
+FastCopy(ver5.8.0) start at 2025/01/16 13:45:48
+<Source>  \\192.168.1.19\SQLBackup\test2\*
+<DestDir> \\192.168.1.19\SQLBackup\20250116
+<Include> *.txt
+<Exclude> web.config;*.config;*.tmp
+<Command> Diff (Size/Date)
+-------------------------------------------------
+
+TotalRead  = 0.0 MiB
+TotalWrite = 0.0 MiB
+TotalFiles = 1 (0)
+TotalTime  = 0.0 sec
+TransRate  = 0.00 MB/s
+FileRate   = 62.5 files/s
+
+Result : (ErrFiles : 0 / ErrDirs : 0) at 2025/01/16 13:45:48
+
+=================================================
+FastCopy(ver5.8.0) start at 2025/01/16 13:47:14
+<Source>  \\192.168.1.19\SQLBackup\test\*
+<DestDir> \\192.168.1.19\SQLBackup\20250116
+<Include> *.txt
+<Exclude> web.config;*.config;*.tmp
+<Command> Diff (Size/Date)
+-------------------------------------------------
+
+TotalRead  = 0.0 MiB
+TotalWrite = 0.0 MiB
+TotalFiles = 0 (0)
+TotalSkip  = 0.0 MiB
+SkipFiles  = 1 (0)
+TotalTime  = 0.0 sec
+TransRate  = 0.00 MB/s
+FileRate   = 0.00 files/s
+
+Result : (ErrFiles : 0 / ErrDirs : 0) at 2025/01/16 13:47:14
+
+=================================================
+FastCopy(ver5.8.0) start at 2025/01/16 13:47:14
+<Source>  \\192.168.1.19\SQLBackup\test2\*
+<DestDir> \\192.168.1.19\SQLBackup\20250116
+<Include> *.txt
+<Exclude> web.config;*.config;*.tmp
+<Command> Diff (Size/Date)
+-------------------------------------------------
+
+TotalRead  = 0.0 MiB
+TotalWrite = 0.0 MiB
+TotalFiles = 0 (0)
+TotalSkip  = 0.0 MiB
+SkipFiles  = 1 (0)
+TotalTime  = 0.0 sec
+TransRate  = 0.00 MB/s
+FileRate   = 0.00 files/s
+
+Result : (ErrFiles : 0 / ErrDirs : 0) at 2025/01/16 13:47:14
+
+=================================================
+FastCopy(ver5.8.0) start at 2025/01/16 16:30:30
+<Source>  \\192.168.1.19\SQLBackup\test\*
+<DestDir> \\192.168.1.19\SQLBackup\20250116
+<Include> *.txt
+<Exclude> web.config;*.config;*.tmp
+<Command> Diff (Size/Date)
+-------------------------------------------------
+
+TotalRead  = 0.0 MiB
+TotalWrite = 0.0 MiB
+TotalFiles = 0 (0)
+TotalSkip  = 0.0 MiB
+SkipFiles  = 1 (0)
+TotalTime  = 0.0 sec
+TransRate  = 0.00 MB/s
+FileRate   = 0.00 files/s
+
+Result : (ErrFiles : 0 / ErrDirs : 0) at 2025/01/16 16:30:30
+
+=================================================
+FastCopy(ver5.8.0) start at 2025/01/16 16:30:31
+<Source>  \\192.168.1.19\SQLBackup\test2\*
+<DestDir> \\192.168.1.19\SQLBackup\20250116
+<Include> *.txt
+<Exclude> web.config;*.config;*.tmp
+<Command> Diff (Size/Date)
+-------------------------------------------------
+
+TotalRead  = 0.0 MiB
+TotalWrite = 0.0 MiB
+TotalFiles = 0 (0)
+TotalSkip  = 0.0 MiB
+SkipFiles  = 1 (0)
+TotalTime  = 0.0 sec
+TransRate  = 0.00 MB/s
+FileRate   = 0.00 files/s
+
+Result : (ErrFiles : 0 / ErrDirs : 0) at 2025/01/16 16:30:31
+
+=================================================
+FastCopy(ver5.8.0) start at 2025/01/16 16:37:42
+<Source>  \\192.168.1.19\SQLBackup\test\*
+<DestDir> \\192.168.1.19\SQLBackup\20250116
+<Include> *.txt
+<Exclude> web.config;*.config;*.tmp
+<Command> Diff (Size/Date)
+-------------------------------------------------
+
+TotalRead  = 0.0 MiB
+TotalWrite = 0.0 MiB
+TotalFiles = 0 (0)
+TotalSkip  = 0.0 MiB
+SkipFiles  = 1 (0)
+TotalTime  = 0.0 sec
+TransRate  = 0.00 MB/s
+FileRate   = 0.00 files/s
+
+Result : (ErrFiles : 0 / ErrDirs : 0) at 2025/01/16 16:37:42
+
+=================================================
+FastCopy(ver5.8.0) start at 2025/01/16 16:37:42
+<Source>  \\192.168.1.19\SQLBackup\test2\*
+<DestDir> \\192.168.1.19\SQLBackup\20250116
+<Include> *.txt
+<Exclude> web.config;*.config;*.tmp
+<Command> Diff (Size/Date)
+-------------------------------------------------
+
+TotalRead  = 0.0 MiB
+TotalWrite = 0.0 MiB
+TotalFiles = 0 (0)
+TotalSkip  = 0.0 MiB
+SkipFiles  = 1 (0)
+TotalTime  = 0.0 sec
+TransRate  = 0.00 MB/s
+FileRate   = 0.00 files/s
+
+Result : (ErrFiles : 0 / ErrDirs : 0) at 2025/01/16 16:37:42
+
+=================================================
+FastCopy(ver5.8.0) start at 2025/01/16 16:52:39
+<Source>  \\192.168.1.19\SQLBackup\test\*
+<DestDir> \\192.168.1.19\SQLBackup\20250116
+<Include> *.txt
+<Exclude> web.config;*.config;*.tmp
+<Command> Diff (Size/Date)
+-------------------------------------------------
+
+TotalRead  = 0.0 MiB
+TotalWrite = 0.0 MiB
+TotalFiles = 0 (0)
+TotalSkip  = 0.0 MiB
+SkipFiles  = 1 (0)
+TotalTime  = 0.0 sec
+TransRate  = 0.00 MB/s
+FileRate   = 0.00 files/s
+
+Result : (ErrFiles : 0 / ErrDirs : 0) at 2025/01/16 16:52:39
+
+=================================================
+FastCopy(ver5.8.0) start at 2025/01/16 16:52:39
+<Source>  \\192.168.1.19\SQLBackup\test2\*
+<DestDir> \\192.168.1.19\SQLBackup\20250116
+<Include> *.txt
+<Exclude> web.config;*.config;*.tmp
+<Command> Diff (Size/Date)
+-------------------------------------------------
+
+TotalRead  = 0.0 MiB
+TotalWrite = 0.0 MiB
+TotalFiles = 0 (0)
+TotalSkip  = 0.0 MiB
+SkipFiles  = 1 (0)
+TotalTime  = 0.0 sec
+TransRate  = 0.00 MB/s
+FileRate   = 0.00 files/s
+
+Result : (ErrFiles : 0 / ErrDirs : 0) at 2025/01/16 16:52:39
+
+=================================================
+FastCopy(ver5.8.0) start at 2025/01/16 16:53:33
+<Source>  \\192.168.1.19\SQLBackup\test\*
+<DestDir> \\192.168.1.19\SQLBackup\20250116
+<Include> *.txt
+<Exclude> web.config;*.config;*.tmp
+<Command> Diff (Size/Date)
+-------------------------------------------------
+
+TotalRead  = 0.0 MiB
+TotalWrite = 0.0 MiB
+TotalFiles = 0 (0)
+TotalSkip  = 0.0 MiB
+SkipFiles  = 1 (0)
+TotalTime  = 0.0 sec
+TransRate  = 0.00 MB/s
+FileRate   = 0.00 files/s
+
+Result : (ErrFiles : 0 / ErrDirs : 0) at 2025/01/16 16:53:33
+
+=================================================
+FastCopy(ver5.8.0) start at 2025/01/16 16:53:33
+<Source>  \\192.168.1.19\SQLBackup\test2\*
+<DestDir> \\192.168.1.19\SQLBackup\20250116
+<Include> *.txt
+<Exclude> web.config;*.config;*.tmp
+<Command> Diff (Size/Date)
+-------------------------------------------------
+
+TotalRead  = 0.0 MiB
+TotalWrite = 0.0 MiB
+TotalFiles = 0 (0)
+TotalSkip  = 0.0 MiB
+SkipFiles  = 1 (0)
+TotalTime  = 0.0 sec
+TransRate  = 0.00 MB/s
+FileRate   = 0.00 files/s
+
+Result : (ErrFiles : 0 / ErrDirs : 0) at 2025/01/16 16:53:33
+

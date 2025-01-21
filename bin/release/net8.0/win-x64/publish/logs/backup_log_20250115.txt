@@ -1,0 +1,3 @@
+2025-01-15 16:20:44 - Excel 檔案中的密碼加密完成：backup_user.xlsx
+2025-01-15 16:20:44 - 處理來源：\\192.168.1.19\SQLBackup\test / erpadmin 到目標：\\192.168.11.16\SQLBackup\test / backupadmin，使用工具：filecopy
+2025-01-15 16:20:44 - 備份任務完成：\\192.168.1.19\SQLBackup\test -> \\192.168.11.16\SQLBackup\test
