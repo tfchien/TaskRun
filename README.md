@@ -140,8 +140,8 @@ TaskRun 將根據配置自動執行符合條件的備份任務。
     - column header:
       
     SourcePaths	SourceFolders	SourceUser	TargetPath	TargetFolder	TargetUser	HostIp	FormDate	ToDate	IncludeFilter	ExcludeFilter	Overwrite	BufSize	Acl	Tool
+    ![image](https://github.com/user-attachments/assets/4e1058d3-4fe4-4d71-8272-21f105a6d7ec)
 
-     ![image](https://github.com/user-attachments/assets/09b1f741-9a38-44b6-8f20-ce88974a5b73)
 
     - file: users.xlsx
     - worksheet: users
