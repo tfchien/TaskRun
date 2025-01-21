@@ -40,21 +40,24 @@ To build the project, run the following command in the [taskrun](http://_vscodec
 
 ```sh
 dotnet build
+---
 
-
-Running the Project
+### Running the Project
 To run the project, use the following command:
+---sh
+dotnet run
+---
 
-Usage
-Logging
+## Usage
+### Logging
 The logging functionality is managed by the LogMng class. To initialize the logger, call the Initialize method with the desired log directory:
 
-Configuration Management
+### Configuration Management
 The configuration management is handled by the ConfigMng class. To log a message, use the Log method:
 
-Contributing
+### Contributing
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
-License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
