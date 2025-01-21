@@ -1,2 +1,0 @@
-D:\project\TaskMng\taskrun\bin\release\net8.0\win-x64\publish\taskrun.pdb
-D:\project\TaskMng\taskrun\bin\release\net8.0\win-x64\publish\taskrun.exe
