@@ -37,8 +37,11 @@ namespace TaskRun
             }
 
             // 連接到目標網路路徑
-            if (!ConnectNetworkPath(task.TargetPath, task.TargetUser))
+            if (!ConnectNetworkPath(task.TargetPath, task.TargetUser)){
                 Log($"無法連接到網路路徑 {task.TargetPath}");
+                throw new DirectoryNotFoundException($"無法連接到網路路徑{task.TargetPath}"); 
+            }
+                
 
             try
             {
@@ -71,10 +74,22 @@ namespace TaskRun
 
         private void ExecuteBackupForSource(BackupTask task)
         {
-            if (!Directory.Exists(task.SourcePath) || !Directory.Exists(task.TargetPath) || !HasWritePermission(task.TargetPath))
+            if (!Directory.Exists(task.SourcePath) )
             {
-                Log("來源或目標路徑存在問題，備份任務中止。");
-                return;
+                Log($"來源路徑不存在：{task.SourcePath}，備份任務中止。",true);
+                throw new DirectoryNotFoundException($"來源路徑不存在：{task.SourcePath}");
+            }
+
+            if (!Directory.Exists(task.TargetPath))
+            {
+                Log($"目標路徑不存在：{task.TargetPath}，備份任務中止。",true);
+                throw new DirectoryNotFoundException($"目標路徑不存在：{task.TargetPath}");
+            }
+
+            if (!HasWritePermission(task.TargetPath))
+            {
+                Log($"目標路徑 '{task.TargetPath}' 沒有寫入權限，備份任務中止。",true);
+                throw new UnauthorizedAccessException($"目標路徑 '{task.TargetPath}' 沒有寫入權限");
             }
 
             // 如果有設定 TargetFolder，將其合併到 TargetPath
@@ -148,7 +163,7 @@ namespace TaskRun
             }
             catch (Exception ex)
             {
-                Log($"備份失敗：來源 {task.SourcePath} 使用 {task.Tool}，原因：{ex.Message}");
+                Log($"備份失敗：來源 {task.SourcePath} 使用 {task.Tool}，原因：{ex.Message}",true);
                 throw; // 異常重新拋出
             }
         }
@@ -415,6 +430,10 @@ namespace TaskRun
                 arguments += $" /bufsize={task.BufSize}M";
             }
 
+            // 設定log檔(依BackupProgram.LogDirectory路徑)
+            string logFileName = $"fastcopy_{DateTime.Now:yyyyMMdd}.log";
+            arguments += $" /logfile=\"{Path.Combine(BackupProgram.LogDirectory, logFileName)}\"";
+
             // 日期篩選（如果提供）
             DateTime? fromDate = ParseRelativeDate(task.FormDate);                   
             if (fromDate?.CompareTo(DateTime.MinValue) > 0)
@@ -529,7 +548,7 @@ namespace TaskRun
             }
 
             string command = $"/C net use \"{path}\" /user:\"{user}\" \"{password}\" /persistent:no";
-            Log($"連線中：{path} /user:\"{user}\"",true);
+            Log($"連線中：{path} /user:\"{user}\"");
 
             var processInfo = new ProcessStartInfo("cmd.exe", command)
             {
@@ -548,10 +567,14 @@ namespace TaskRun
                         Log($"無法啟動 net use 命令。");
                         return false;
                     }
+                    string output = process.StandardOutput.ReadToEnd();
+                    string error = process.StandardError.ReadToEnd();
                     process.WaitForExit();
                     if (process.ExitCode != 0)
                     {
                         Log($"無法連線到網路位置：{path}");
+                        Log($"輸出：{output}");
+                        Log($"錯誤：{error}");
                         Log(process.StandardError.ReadToEnd());
                         return false;
                     }
@@ -568,7 +591,7 @@ namespace TaskRun
                 return false;
             }
 
-            Log($"成功連線到網路位置：{path}");
+            Log($"成功連線到網路位置：{path}",true);
             return true;
         }
         static void DisconnectNetworkPath(string path)

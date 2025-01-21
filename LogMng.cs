@@ -42,7 +42,7 @@ namespace TaskRun
         {
             Console.WriteLine(message); // 顯示到控制台
             if(!isLog) return;
-            string logFilePath = Path.Combine(logDirectory, $"backup_log_{DateTime.Now:yyyyMMdd}.txt");
+            string logFilePath = Path.Combine(logDirectory, $"backup_{DateTime.Now:yyyyMMdd}.log");
             string logEntry = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - {message}{Environment.NewLine}";
             File.AppendAllText(logFilePath, logEntry); // 寫入日誌文件
         }

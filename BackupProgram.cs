@@ -38,8 +38,8 @@ namespace TaskRun
                 }
                 LogDirectory = Path.Combine(baseDirectory, "log");   
                 LogMng.Initialize(LogDirectory);  
-                Log("=====================================");
-                Log("TaskRun 開始執行。");
+                Log("=====================================",true);
+                Log($"TaskRun 開始執行。 {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}",true);
                 Log($"  版本：{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}");
                 //Log($"  運行目錄：{AppDomain.CurrentDomain.BaseDirectory}");
                 Log($"  運行目錄：{baseDirectory}");
@@ -98,8 +98,9 @@ namespace TaskRun
             {
                 Log($"主程序發生錯誤：{ex.Message}");
             }
-            finally
+            finally            
             {
+                Log($"TaskRun 執行完畢。 {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}",true);
                 bool force_close = ConfigMng.ReadIniFile(iniFilePath,"Windows","force_close").ToLower() == "true" ;
                 if (!force_close && !args.Contains("/force_close"))
                 {
@@ -143,7 +144,8 @@ namespace TaskRun
                 }
                 catch (Exception ex)
                 {
-                    Log($"備份任務失敗：{task.SourcePath} {ex.Message} :{ex.StackTrace}",true);
+                    Log($"備份任務失敗：{task.SourcePath} {ex.Message} ",true);
+                    Log($"錯誤:{ex.StackTrace}");
                     if(isLogConfig) 
                     {
                         Log($"備份任務詳細信息:",true);

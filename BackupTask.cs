@@ -60,21 +60,16 @@ namespace TaskRun
             var currentTime = DateTime.Now;
 
             // 嘗試解析 targetFolder 的日期格式
-            var result = Regex.Replace(targetFolder, @"y{2,4}|M{1,2}|d{1,2}|h{1,2}|m{1,2}|s{1,2}", match =>
+            var result = Regex.Replace(targetFolder, @"y{2,4}|M{2}|d{2}|h{2}|m{2}|s{2}", match =>
             {
                 return match.Value switch
                 {
                     "yyyy" => currentTime.ToString("yyyy"), // 四位年份
                     "yy" => currentTime.ToString("yy"),     // 兩位年份
-                    "M" => currentTime.ToString("%M"),      // 不帶前導零的月份
                     "MM" => currentTime.ToString("MM"),     // 帶前導零的月份
-                    "d" => currentTime.ToString("%d"),      // 不帶前導零的日期
-                    "dd" => currentTime.ToString("dd"),     // 帶前導零的日期
-                    "h" => currentTime.ToString("%H"),      // 不帶前導零的24小時制
-                    "hh" => currentTime.ToString("HH"),     // 帶前導零的24小時制
-                    "m" => currentTime.ToString("%m"),      // 不帶前導零的分鐘
+                    "dd" => currentTime.ToString("dd"),     // 帶前導零的日期                  
+                    "hh" => currentTime.ToString("HH"),     // 帶前導零的24小時制                 
                     "mm" => currentTime.ToString("mm"),     // 帶前導零的分鐘
-                    "s" => currentTime.ToString("%s"),      // 不帶前導零的秒
                     "ss" => currentTime.ToString("ss"),     // 帶前導零的秒
                     _ => match.Value                         // 預設保留原值
                 };
