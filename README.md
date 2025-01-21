@@ -140,6 +140,7 @@ TaskRun 將根據配置自動執行符合條件的備份任務。
     - column header:
       
     SourcePaths	SourceFolders	SourceUser	TargetPath	TargetFolder	TargetUser	HostIp	FormDate	ToDate	IncludeFilter	ExcludeFilter	Overwrite	BufSize	Acl	Tool
+
     ![image](https://github.com/user-attachments/assets/4e1058d3-4fe4-4d71-8272-21f105a6d7ec)
 
 
@@ -148,10 +149,8 @@ TaskRun 將根據配置自動執行符合條件的備份任務。
     - column header:
       
     user	password	encrypted
-    
-    ![image](https://github.com/user-attachments/assets/9f6334b0-4d0a-47e0-95cd-b2f94a46ceb1)
 
-
+    ![image](https://github.com/user-attachments/assets/27d86c53-9588-445f-b17a-d78edc2fbcbe)
 
 ##日誌記錄
  - 日誌功能由 LogMng 類別管理。
