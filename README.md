@@ -134,6 +134,25 @@ TaskRun 將根據配置自動執行符合條件的備份任務。
  
  5.執行條件（如 IP 限制 
 
+ 6. 設定檔格式
+    - file: backup_config.xlsx
+    - worksheet: BackupConfig
+    - column header:
+      
+    SourcePaths	SourceFolders	SourceUser	TargetPath	TargetFolder	TargetUser	HostIp	FormDate	ToDate	IncludeFilter	ExcludeFilter	Overwrite	BufSize	Acl	Tool
+
+     ![image](https://github.com/user-attachments/assets/09b1f741-9a38-44b6-8f20-ce88974a5b73)
+
+    - file: users.xlsx
+    - worksheet: users
+    - column header:
+      
+    user	password	encrypted
+    
+    ![image](https://github.com/user-attachments/assets/9f6334b0-4d0a-47e0-95cd-b2f94a46ceb1)
+
+
+
 ##日誌記錄
  - 日誌功能由 LogMng 類別管理。
  - 同時產生console log及文字記錄
