@@ -93,7 +93,7 @@ taskrun/
 
 1. 克隆儲存庫：
     ```sh
-    git clone https://github.com/tfchien/TaskMng.git
+    git clone https://github.com/tfchien/TaskRun.git
     cd TaskMng/taskrun
     ```
 
