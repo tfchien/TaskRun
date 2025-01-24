@@ -12,7 +12,7 @@ TaskMng 是一個用 C# 編寫的高級任務管理應用程式，專為多台�
 
 ## 專案結構
 
-TaskMng.sln 
+TaskRun.sln 
 taskrun/ 
 - BackupProgram.cs 
 - BackupTask.cs 
@@ -35,7 +35,7 @@ taskrun/
 1. 克隆儲存庫：
     ```sh
     git clone https://github.com/tfchien/TaskRun.git
-    cd TaskMng/taskrun
+    cd TaskRun/taskrun
     ```
 
 2. 還原相依項：
