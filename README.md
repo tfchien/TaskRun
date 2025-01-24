@@ -50,11 +50,13 @@ taskrun/
 dotnet build
 ```
 
-執行專案
-使用以下命令運行專案：
+建立執行檔
+使用以下命令單一執行檔：
+
 
 ```sh
-dotnet run
+dotnet publish -c release -r win-x64 -p:PublishSingleFile=true -p:PublishTrimmed=true
+xcopy taskrun\bin\release\net8.0\win-x64\publish\taskrun.exe d:\backup\taskrun /E /H /Y
 ```
 
 ##使用說明
