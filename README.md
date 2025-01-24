@@ -109,18 +109,13 @@ TaskRun 將根據配置自動執行符合條件的備份任務。
 
   ini檔內容如下:
   
-  [Paths]
-    
-    BaseDirectory=
-  
-    ConfigFile=backup_config.xlsx
-  
+  [Paths]    
+    BaseDirectory=  
+    ConfigFile=backup_config.xlsx  
     UserFile=backup_user.xlsx
 
-  [Windows]
-
-    isLogConfig=false
-    
+  [Windows]    
+    isLogConfig=false    
     force_close=false
 
 
