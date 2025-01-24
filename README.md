@@ -63,7 +63,7 @@ TaskMng 是一個用 C# 編寫的高級任務管理應用程式，專為多台�
 ## 主要特點
 
 - **Excel 配置管理**：通過 Excel 文件輕鬆設定和管理多台主機的備份任務。
-- **多種備份模式**：支援 File Copy、Robocopy、XCopy 和 FastCopy 模式。
+- **多種備份模式**：支援 File Copy、Robocopy、XCopy、FastCopy 和 Delete 模式。
 - **靈活的參數設定**：直接在配置文件中設定複雜的參數，無需額外的批次檔。
 - **安全的憑證管理**：使用加密方式將連線帳號安全存儲在 Windows 註冊表中。
 - **智能執行**：根據配置檢查本機 IP，只執行符合條件的任務。
@@ -128,7 +128,7 @@ TaskRun 將根據配置自動執行符合條件的備份任務。
  
  2.備份來源和目標
  
- 3.備份模式（File Copy、Robocopy、XCopy、FastCopy）
+ 3.備份模式（File Copy、Robocopy、XCopy、FastCopy、Delete）
  
  4.特定的備份參數
  

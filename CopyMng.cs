@@ -37,9 +37,23 @@ namespace TaskRun
             }
 
             // 連接到目標網路路徑
-            if (!ConnectNetworkPath(task.TargetPath, task.TargetUser)){
+            if (!ConnectNetworkPath(task.TargetPath, task.TargetUser))
+            {
                 Log($"無法連接到網路路徑 {task.TargetPath}");
                 throw new DirectoryNotFoundException($"無法連接到網路路徑{task.TargetPath}"); 
+            }
+
+            if (task.Tool.ToLower() == "delete")
+            {
+                try
+                {
+                    ExecuteBackupTask(task);
+                }
+                finally
+                {
+                    DisconnectNetworkPath(task.TargetPath);
+                }
+                return;
             }
                 
 
@@ -49,11 +63,13 @@ namespace TaskRun
                 {
                     task.SourcePath = sourcePath;
 
+                    // 連接到來源網路路徑  
                     if (!ConnectNetworkPath(task.SourcePath, task.SourceUser))
                     {
                         Log($"無法連接到網路路徑 {task.SourcePath}，跳過...");
                         continue;
                     }
+                   
 
                     try
                     {
@@ -62,7 +78,7 @@ namespace TaskRun
                     }
                     finally
                     {
-                        DisconnectNetworkPath(task.SourcePath);
+                        DisconnectNetworkPath(task.SourcePath);                        
                     }
                 }
             }
@@ -73,13 +89,7 @@ namespace TaskRun
         }
 
         private void ExecuteBackupForSource(BackupTask task)
-        {
-            if (!Directory.Exists(task.SourcePath) )
-            {
-                Log($"來源路徑不存在：{task.SourcePath}，備份任務中止。",true);
-                throw new DirectoryNotFoundException($"來源路徑不存在：{task.SourcePath}");
-            }
-
+        { 
             if (!Directory.Exists(task.TargetPath))
             {
                 Log($"目標路徑不存在：{task.TargetPath}，備份任務中止。",true);
@@ -91,6 +101,21 @@ namespace TaskRun
                 Log($"目標路徑 '{task.TargetPath}' 沒有寫入權限，備份任務中止。",true);
                 throw new UnauthorizedAccessException($"目標路徑 '{task.TargetPath}' 沒有寫入權限");
             }
+
+            if (task.Tool.ToLower() == "delete")
+            {
+                Log($"刪除目標：{task.TargetPath}，執行ExecuteBackupTask");
+                ExecuteBackupTask(task);
+                return;
+            }
+
+
+            if (!Directory.Exists(task.SourcePath))
+            {
+                Log($"來源路徑不存在：{task.SourcePath}，備份任務中止。",true);
+                throw new DirectoryNotFoundException($"來源路徑不存在：{task.SourcePath}");
+            }
+            
 
             // 如果有設定 TargetFolder，將其合併到 TargetPath
             if (!string.IsNullOrWhiteSpace(task.TargetFolder))
@@ -137,7 +162,10 @@ namespace TaskRun
         /// </summary>
         static void ExecuteBackupTask(BackupTask task)
         {
-            Log($"處理來源：{task.SourcePath} 到目標：{task.TargetFullPath}，使用工具：{task.Tool}", true);
+            if ("delete".Equals(task.Tool, StringComparison.CurrentCultureIgnoreCase))   
+                Log($"處理刪除目標：{task.TargetFullPath}，使用工具：{task.Tool}",true);
+            else
+                Log($"處理來源：{task.SourcePath} 到目標：{task.TargetFullPath}，使用工具：{task.Tool}", true);
 
             try
             {
@@ -155,6 +183,9 @@ namespace TaskRun
                     case "fastcopy":
                         UseFastCopy(task);
                         break;
+                    case "delete":
+                        UseDelete(task);
+                        break;
                     default:
                         Log("未知的工具選項，將使用 File.Copy 作為預設。");
                         UseFileCopy(task);
@@ -168,7 +199,78 @@ namespace TaskRun
             }
         }
  
-   
+        static void UseDelete(BackupTask task)
+        {
+            try
+            {
+                if ((task.ExcludeFilter == null || task.ExcludeFilter.Count ==0 )
+                    && (task.IncludeFilter == null || task.IncludeFilter.Count ==0 )
+                    && string.IsNullOrWhiteSpace(task.FormDate) && string.IsNullOrWhiteSpace(task.ToDate))                                                              
+                {
+                    //直接刪除資料夾 task.TargetFullPath
+                    try
+                    {
+                        Directory.Delete(task.TargetFullPath, true);
+                        Log($"刪除資料夾：{task.TargetFullPath}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Log($"刪除資料夾失敗：{task.TargetFullPath}，原因：{ex.Message}",true);                        
+                    }
+                    return;
+
+                }
+                // Combine Include and Exclude filters if they exist
+                var files = GetFilesRecursive(task.TargetFullPath, "*"); // Get all files initially
+                
+                // Include filter
+                if (task.IncludeFilter != null && task.IncludeFilter.Any())
+                {
+                    files = files.Where(file => task.IncludeFilter.Any(include => MatchesPattern(file, include)));
+                    Log($"Include篩選: {string.Join(", ", task.IncludeFilter)}");
+                }
+
+                // Exclude filter
+                if (task.ExcludeFilter != null && task.ExcludeFilter.Any())
+                {
+                    files = files.Where(file => !task.ExcludeFilter.Any(exclude => MatchesPattern(file, exclude)));
+                    Log($"Exclude篩選: {string.Join(", ", task.ExcludeFilter)}");
+                }
+                
+                // Date filter
+                if (!string.IsNullOrWhiteSpace(task.FormDate) || !string.IsNullOrWhiteSpace(task.ToDate) )
+                {                    
+                    DateTime? fromDate = ParseRelativeDate(task.FormDate)?.Date;
+                    DateTime? toDate = ParseRelativeDate(task.ToDate)?.Date; 
+                    files = files.Where(f =>
+                        (!fromDate.HasValue || File.GetLastWriteTime(f).Date >= fromDate.Value) &&
+                        (!toDate.HasValue || File.GetLastWriteTime(f).Date <= toDate.Value));
+                    
+                    Log($"日期篩選: {fromDate?.ToString("yyyy-MM-dd")} - {toDate?.ToString("yyyy-MM-dd")}");
+
+                }
+
+                // Delete files
+                foreach (var file in files)
+                {
+                    try
+                    {
+                        File.Delete(file);
+                        Log($"刪除檔案：{file}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Log($"刪除檔案失敗：{file}，原因：{ex.Message}",true);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log($"刪除檔案失敗：原因：{ex.Message}");
+                throw; // 將異常重新拋出，讓主程序處理
+            }
+        }
+
         static void UseFileCopy(BackupTask task)
         {
             
@@ -596,6 +698,12 @@ namespace TaskRun
         }
         static void DisconnectNetworkPath(string path)
         {
+             // 判斷是否為本機路徑
+            if (Path.IsPathRooted(path) && !path.StartsWith(@"\\")) // 檢查是否為磁碟根目錄且非 UNC 路徑
+            {
+                Log($"路徑 '{path}' 為本機路徑，不需斷開連線。");
+                return; // 本機路徑不需斷開
+            }
             string command = $"/C net use \"{path}\" /delete /y";
             var processInfo = new ProcessStartInfo("cmd.exe", command)
             {
