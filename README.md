@@ -46,6 +46,7 @@ taskrun/
 ### 建置專案
 
 在 taskrun 目錄中執行以下命令：
+
 ```sh
 dotnet build
 ```
@@ -53,29 +54,35 @@ dotnet build
 建立執行檔
 使用以下命令單一執行檔：
 
-
 ```sh
 dotnet publish -c release -r win-x64 -p:PublishSingleFile=true -p:PublishTrimmed=true
+```
+### 複製執行到到執行目錄
+
+假設你執行資料夾在d:\backup\taskrun，
+
+```sh
 xcopy taskrun\bin\release\net8.0\win-x64\publish\taskrun.exe d:\backup\taskrun /E /H /Y
 ```
 
-##使用說明
+## 使用說明
+
 在 Excel 配置文件中設定備份任務和參數。
 使用 EncryptMng 類別將連線憑證加密存儲在 Windows 註冊表中。
 將應用程式添加到 Windows 任務排程器中。
 TaskRun 將根據配置自動執行符合條件的備份任務。
 
-##配置管理
+## 配置管理
 
- 1.配置管理由 ConfigMng 類別處理。您可以在 Excel 文件中定義以下內容：
+ 1. 配置管理由 ConfigMng 類別處理。您可以在 Excel 文件中定義以下內容：
  
- 2.備份來源和目標
+ 2. 備份來源和目標
  
- 3.備份模式（File Copy、Robocopy、XCopy、FastCopy、Delete）
+ 3. 備份模式（File Copy、Robocopy、XCopy、FastCopy、Delete）
  
- 4.特定的備份參數
+ 4. 特定的備份參數
  
- 5.執行條件（如 IP 限制 
+ 5. 執行條件（如 IP 限制 
 
  6. 設定檔格式
     - file: backup_config.xlsx
@@ -95,10 +102,26 @@ TaskRun 將根據配置自動執行符合條件的備份任務。
 
     ![image](https://github.com/user-attachments/assets/27d86c53-9588-445f-b17a-d78edc2fbcbe)
 
-##日誌記錄
+## 日誌記錄
  - 日誌功能由 LogMng 類別管理。
  - 同時產生console log及文字記錄
  - 文字記錄檔可在ini檔設置
+
+  ini檔內容如下:
+  
+  [Paths]
+    
+    BaseDirectory=
+  
+    ConfigFile=backup_config.xlsx
+  
+    UserFile=backup_user.xlsx
+
+  [Windows]
+
+    isLogConfig=false
+    
+    force_close=false
 
 
 ##貢獻
